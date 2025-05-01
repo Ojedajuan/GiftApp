@@ -1,0 +1,23 @@
+<!--<ul>
+    <li *ngFor="let gif of resultados">
+        <p>{{ gif.title }}</p>
+    </li>
+</ul>-->
+<div class="row">  <!-- Corregido: quité el ">" extra -->
+    <div *ngFor="let gif of resultados"
+        class="col-md-4 col-sm-6 animate__animated animate__fadeIn__faster">  <!-- Corregido: añadí la clase animate__animated para animación -->">
+        <div class="card">
+            <img class="card-img-top"
+            [src]="gif.images.downsized_medium.url"
+            [alt]="gif.title "
+            class ="card-img-top" />  <!-- Corregido: añadí el atributo alt para accesibilidad -->
+              <!-- Corregido: añadí el atributo alt para accesibilidad -->
+            <div class="card-body">
+                <p class="card-text">
+                    {{ gif.title }}  <!-- Corregido: añadí el atributo alt para accesibilidad -->   
+                    <!--{{ gif.images.downsized_medium.url }}-->
+                </p>  <!-- Eliminados espacios innecesarios -->
+            </div>
+        </div>
+    </div>
+</div>
