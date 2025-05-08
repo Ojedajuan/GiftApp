@@ -3,21 +3,47 @@
         <p>{{ gif.title }}</p>
     </li>
 </ul>-->
-<div class="row">  <!-- Corregido: quité el ">" extra -->
-    <div *ngFor="let gif of resultados"
-        class="col-md-4 col-sm-6 animate__animated animate__fadeIn__faster">  <!-- Corregido: añadí la clase animate__animated para animación -->">
-        <div class="card">
-            <img class="card-img-top"
-            [src]="gif.images.downsized_medium.url"
-            [alt]="gif.title "
-            class ="card-img-top" />  <!-- Corregido: añadí el atributo alt para accesibilidad -->
-              <!-- Corregido: añadí el atributo alt para accesibilidad -->
-            <div class="card-body">
-                <p class="card-text">
-                    {{ gif.title }}  <!-- Corregido: añadí el atributo alt para accesibilidad -->   
-                    <!--{{ gif.images.downsized_medium.url }}-->
-                </p>  <!-- Eliminados espacios innecesarios -->
-            </div>
+<!-- resultados.component.html -->
+<div class="container mt-5">
+    <h3>Resultados de búsqueda</h3>
+    <div class="row" *ngIf="resultados.length > 0; else noResultados">
+      <div class="col-md-3 col-sm-6 mb-4" *ngFor="let gif of resultados">
+        <div class="card shadow-sm h-100 gif-card" (click)="mostrarGifEnModal(gif)">
+          <img [src]="gif.images.downsized_medium.url"
+               alt="{{ gif.title }}"
+               class="card-img-top gif-img"
+               loading="lazy">
+          <div class="card-body p-2 text-center">
+            <small class="text-muted">{{ gif.title | slice:0:30 }}{{ gif.title.length > 30 ? '...' : '' }}</small>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+    <!-- Mensaje si no hay resultados -->
+    <ng-template #noResultados>
+      <div class="alert alert-info text-center">
+        No se encontraron GIFs. ¡Introduce un término de búsqueda!
+      </div>
+    </ng-template>
+  </div>
+<!-- Modal simple -->
+<div class="modal fade show" *ngIf="selectedGif" style="display: block;" (click)="cerrarModal()">
+    <div class="modal-dialog modal-lg" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ selectedGif.title }}</h5>
+          <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img [src]="selectedGif.images.original.url"
+               class="img-fluid mb-3"
+               alt="{{ selectedGif.title }}" />
+  
+          <!-- Botón para copiar URL -->
+          <button class="btn btn-outline-primary btn-sm" (click)="copiarUrl(selectedGif.images.original.url)">
+            📋 Copiar URL
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
