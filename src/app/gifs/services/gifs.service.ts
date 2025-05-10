@@ -9,16 +9,19 @@ import { throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class GifsService {
-  private apikey    : string = '2ZgNyB4d4GkpGTqvxFaRo5YH0BKIZmXZ';
+  private apikey: string = '2ZgNyB4d4GkpGTqvxFaRo5YH0BKIZmXZ';
   private servicioUrl: string = 'https://api.giphy.com/v1/gifs'; // Eliminé la barra final
   // Historial de búsquedas
   private _historial: string[] = [];
-  public resultados : Gif[] = [];
+  public resultados: Gif[] = [];
 
   // Variable para verificar si estamos en el navegador
   private isBrowser: boolean;
 
-  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(
+    private http: HttpClient, 
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
 
     // Solo acceder a localStorage si estamos en el navegador
@@ -30,6 +33,18 @@ export class GifsService {
 
   get historial() {
     return [...this._historial];
+  }
+
+  // Método para eliminar el historial
+  deleteHistorial() {
+    this._historial = [];
+    this.resultados = [];
+
+    // Eliminar del localStorage solo si estamos en el navegador
+    if (this.isBrowser) {
+      localStorage.removeItem('historial');
+      localStorage.removeItem('resultados');
+    }
   }
 
   buscarGifs(query: string = '') {
@@ -90,3 +105,5 @@ export class GifsService {
     return throwError('Algo salió mal. Por favor, inténtalo de nuevo más tarde.');
   }
 }
+// Removed unused and incorrectly implemented handleError function
+

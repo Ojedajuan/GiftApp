@@ -1,0 +1,148 @@
+
+
+/* Estilos elegantes para el sidebar */
+
+/* Variables de colores - puedes modificarlas según tu preferencia */
+:root {
+    --primary-color: #0ddceb;
+    --primary-hover: #4361ee;
+    --text-light: #f8f9fa;
+    --dark-bg: #54cad3;
+    --border-color: #4895ef;
+    --item-hover: #4cc9f0;
+    --item-active: #3a0ca3;
+  }
+  
+  /* Estilos del sidebar */
+  #sidebar {
+    height: 100%;
+    min-height: 100vh;
+    background-color: var(--dark-bg);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: sticky;
+    top: 0;
+  }
+  
+  /* Título del sidebar */
+  #sidebar h3 {
+    color: var(--text-light);
+    font-size: 1.8rem;
+    padding: 1rem 0.5rem;
+    margin-bottom: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Línea separadora */
+  #sidebar hr {
+    border-color: var(--border-color);
+    opacity: 0.6;
+    margin: 0.5rem 0 1.5rem;
+  }
+  
+  /* Contenedor de la lista */
+  #sidebar .list-group {
+    padding: 0.5rem;
+  }
+  
+  /* Estilo para cada item */
+  #sidebar .list-group-item {
+    background-color: transparent;
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s ease-in-out;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  /* Efecto hover para los items */
+  #sidebar .list-group-item:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(19, 176, 224, 0.1);
+    color: white;
+  }
+  
+  /* Efecto active para los items */
+  #sidebar .list-group-item:active,
+  #sidebar .list-group-item.active {
+    background-color: var(--item-active);
+    color: white;
+    font-weight: 500;
+  }
+  
+  /* Efecto de animación */
+  #sidebar .list-group-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.5s;
+    z-index: -1;
+  }
+  
+  #sidebar .list-group-item:hover::before {
+    left: 100%;
+  }
+  
+  /* Media queries para responsividad */
+  @media (max-width: 768px) {
+    #sidebar {
+      min-height: auto;
+      position: relative;
+    }
+    
+    #sidebar.collapsed {
+      display: none;
+    }
+    
+    .sidebar-toggle {
+      display: block;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1030;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(162, 180, 59, 0.2);
+      cursor: pointer;
+    }
+  }
+  
+  /* Animación para los nuevos elementos del historial */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  #sidebar .list-group-item:nth-child(1) { animation: fadeIn 0.3s ease-out; }
+  #sidebar .list-group-item:nth-child(2) { animation: fadeIn 0.4s ease-out; }
+  #sidebar .list-group-item:nth-child(3) { animation: fadeIn 0.5s ease-out; }
+  #sidebar .list-group-item:nth-child(4) { animation: fadeIn 0.6s ease-out; }
+  #sidebar .list-group-item:nth-child(5) { animation: fadeIn 0.7s ease-out; }
+  /* y así sucesivamente si tienes más items */

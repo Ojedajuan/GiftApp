@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SideBarComponent } from './side-bar/side-bar.component';
-
+import { SidebarComponent } from './side-bar/side-bar.component'; // Make sure the case matches
 
 @NgModule({
-  declarations: [], // Declare the SideBarComponent here
-  imports: [CommonModule, SideBarComponent], // Keep only modules here
-  exports: [],
+  declarations: [
+    // No declarations for standalone components
+  ],
+  imports: [
+    CommonModule, // Only modules go in imports
+    SidebarComponent // Import standalone components here
+  ],
+  exports: [
+    SidebarComponent // Export the component so other modules can use it
+  ]
 })
 export class SharedModule { }
