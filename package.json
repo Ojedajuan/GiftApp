@@ -1,43 +1,28 @@
 {
-  "name": "gift-app",
-  "version": "0.0.0",
+  "name": "giftapp",
+  "version": "1.0.0",
+  "description": "🎁 Web App para buscar GIFs con interfaz simple",
+  "main": "src/index.html",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:giftApp": "node dist/gift-app/server/server.mjs"
+    "start": "live-server src/ --port=3000 --open",
+    "build": "tsc src/app/*.ts --outDir src/app/dist/",
+    "dev": "tsc --watch src/app/*.ts --outDir src/app/dist/",
+    "clean": "rm -rf src/app/dist/",
+    "deploy": "npm run build && echo 'Ready for deployment!'"
   },
-  "private": true,
-  "dependencies": {
-    "@angular/common": "^19.2.0",
-    "@angular/compiler": "^19.2.0",
-    "@angular/core": "^19.2.0",
-    "@angular/forms": "^19.2.0",
-    "@angular/platform-browser": "^19.2.0",
-    "@angular/platform-browser-dynamic": "^19.2.0",
-    "@angular/platform-server": "^19.2.0",
-    "@angular/router": "^19.2.0",
-    "@angular/ssr": "^19.2.4",
-    "express": "^4.18.2",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+  "keywords": ["gif", "search", "webapp", "typescript", "frontend"],
+  "author": "Juan Ojeda <tu-email@ejemplo.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/Ojedajuan/GiftApp#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ojedajuan/GiftApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ojedajuan/GiftApp/issues"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.2.4",
-    "@angular/cli": "^19.2.4",
-    "@angular/compiler-cli": "^19.2.0",
-    "@types/express": "^4.17.17",
-    "@types/jasmine": "~5.1.0",
-    "@types/node": "^18.18.0",
-    "jasmine-core": "~5.6.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.7.2"
+    "typescript": "^5.3.0",
+    "live-server": "^1.2.2"
   }
 }
