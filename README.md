@@ -39,3 +39,17 @@ Este proyecto es una aplicación web robusta construida con Angular que implemen
 # Verificar versiones requeridas
 node --version  # v18.0.0 o superior
 npm --version   # v9.0.0 o superior
+# 1. Clonar el repositorio
+git clone https://github.com/tu-usuario/tu-proyecto.git
+cd tu-proyecto
+
+# 2. Instalar dependencias
+npm install
+
+# 3. Configurar variables de entorno
+cp src/environments/environment.example.ts src/environments/environment.ts
+
+# 4. Ejecutar en modo desarrollo
+npm start
+
+
