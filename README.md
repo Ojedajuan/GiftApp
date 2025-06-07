@@ -1,4 +1,4 @@
-# 🚀 Nombre de tu Proyecto
+# 🚀 GiftApp
 
 > Aplicación web moderna desarrollada con Angular y las mejores prácticas de desarrollo frontend
 
